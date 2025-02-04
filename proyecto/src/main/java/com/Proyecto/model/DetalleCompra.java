@@ -26,5 +26,5 @@ public class DetalleCompra {
     @OneToOne
     private Compra compra;
     @ManyToOne
-    private Libros libros;
+    private Libro libros;
 }

@@ -24,6 +24,6 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario")
     private List<Compra> compras;
     @OneToMany(mappedBy = "usuario")
-    private List<Libros> libros;
+    private List<Libro> libros;
 
 }

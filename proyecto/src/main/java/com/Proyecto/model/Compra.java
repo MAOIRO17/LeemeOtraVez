@@ -29,5 +29,5 @@ public class Compra {
     @OneToOne(mappedBy = "compra")
     private DetalleCompra detalleCompra;
     @OneToMany(mappedBy = "compra")
-    private List<Libros> libros;
+    private List<Libro> libros;
 }

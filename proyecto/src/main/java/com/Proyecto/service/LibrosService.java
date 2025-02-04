@@ -3,12 +3,12 @@ package com.Proyecto.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.Proyecto.model.Libros;
+import com.Proyecto.model.Libro;
 
 public interface LibrosService {
-    public Libros save(Libros libro);
-    public void update(Libros libro);
-    public void delete(Integer id);
-    public Optional<Libros> get(Integer id);
-    public List<Libros> getAll();
+    public Libro save(Libro libro);
+    public void update(Libro libro);
+    public void delete(Long id);
+    public Optional<Libro> get(Long id);
+    public List<Libro> getAll();
 }

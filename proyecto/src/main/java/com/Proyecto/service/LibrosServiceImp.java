@@ -5,8 +5,8 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.Proyecto.model.Libros;
-import com.Proyecto.repository.LibrosRepository;
+import com.Proyecto.model.Libro;
+import com.Proyecto.Repository.LibrosRepository;
 
 @Service
 public class LibrosServiceImp implements LibrosService {
@@ -14,27 +14,27 @@ public class LibrosServiceImp implements LibrosService {
     private LibrosRepository librosRepository;
 
     @Override
-    public Libros save(Libros libro) {
+    public Libro save(Libro libro) {
         return librosRepository.save(libro);
     }
 
     @Override
-    public void update(Libros libro) {
+    public void update(Libro libro) {
         librosRepository.save(libro);
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
         librosRepository.deleteById(id);
     }
 
     @Override
-    public Optional<Libros> get(Integer id) {
+    public Optional<Libro> get(Long id) {
         return librosRepository.findById(id);
     }
 
     @Override
-    public List<Libros> getAll() {
+    public List<Libro> getAll() {
         return librosRepository.findAll();
     }
 
