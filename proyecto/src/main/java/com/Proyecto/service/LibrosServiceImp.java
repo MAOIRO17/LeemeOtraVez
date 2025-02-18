@@ -24,12 +24,12 @@ public class LibrosServiceImp implements LibrosService {
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Integer id) {
         librosRepository.deleteById(id);
     }
 
     @Override
-    public Optional<Libro> get(Long id) {
+    public Optional<Libro> get(Integer id) {
         return librosRepository.findById(id);
     }
 

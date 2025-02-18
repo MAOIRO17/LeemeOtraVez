@@ -1,12 +1,7 @@
 package com.Proyecto.model;
 
-import org.springframework.data.annotation.Id;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
@@ -15,13 +10,19 @@ import lombok.NoArgsConstructor;
 @Table(name = "libros")
 public class Libro {
     @Id
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String titulo;
     private String autor;
+    
+    @Enumerated(EnumType.STRING)
     private Categoria categoria;
+
     private String idioma;
     private float precio;
     private String imagen;
+
     @ManyToOne
+    @ToString.Exclude
     private Usuario usuario;
 }

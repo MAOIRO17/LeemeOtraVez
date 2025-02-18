@@ -19,14 +19,14 @@
 <body>
 
   <!-- Navigation -->
-  <div th:include="administrador/template_admin.html::header"></div>
+  <div th:include="admin/admin.html::header"></div>
 
   <!-- Page Content -->
   <div class="container">
 
     <!-- Page Heading/Breadcrumbs -->
     <h1 class="mt-4 mb-3">
-      LéemeOtravez<small>Libros</small>
+      <small>LéemeOtravez</small>
     </h1>
 
     <ol class="breadcrumb">
@@ -34,7 +34,7 @@
       <li class="breadcrumb-item active">Ver Libros</li>
     </ol>
 
-    <a class="btn btn-primary" th:href="@{/libros/create}">Añadir Libro</a>
+    <a class="btn btn-primary" th:href="@{/libros/crear}">Añadir Libro</a>
     <h2>Libros</h2>
     <table class="table">
       <thead>
@@ -51,7 +51,7 @@
         <tr th:each="libro:${libros}">
           <td th:text="${libro.titulo}"></td>
           <td th:text="${libro.autor}"></td>
-          <td th:text="${libro.categoria.nombre}"></td> 
+          <td th:text="${libro.categoria.name()}"></td> 
           <td th:text="${libro.precio}"></td>
           <td><a class="btn btn-warning" th:href="@{libros/edit/{id} (id=${libro.id})}">Editar</a></td>
           <td><a class="btn btn-danger" th:href="@{libros/delete/{id} (id=${libro.id})}">Eliminar</a></td>
@@ -62,7 +62,7 @@
   </div>
   <!-- /.container -->
 
-  <div th:include="administrador/template_admin.html::footer"></div>
+  <div th:include="admin/admin.html::footer"></div>
 
   <!-- Bootstrap core JavaScript -->
   <script th:src="@{vendor/jquery/jquery.min.js}"></script>

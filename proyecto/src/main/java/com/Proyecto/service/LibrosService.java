@@ -8,7 +8,7 @@ import com.Proyecto.model.Libro;
 public interface LibrosService {
     public Libro save(Libro libro);
     public void update(Libro libro);
-    public void delete(Long id);
-    public Optional<Libro> get(Long id);
+    public void delete(Integer id);
+    public Optional<Libro> get(Integer id);
     public List<Libro> getAll();
 }

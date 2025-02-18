@@ -11,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.Proyecto.model.Libro;
 import com.Proyecto.model.Usuario;
 import com.Proyecto.service.LibrosService;
@@ -43,10 +42,10 @@ public class LibrosController {
 
     @PostMapping("/save")
     public String save(Libro libro, @RequestParam("img") MultipartFile file) throws IOException {
-        LOGGER.info("Libro a editar: " + libro);
-        Usuario usuario = new Usuario(49333225L, "", "", "", "", null, null);
+        Usuario usuario = new Usuario(1, "", "", "", "", "", null, null);
         libro.setUsuario(usuario);
-        if (libro.getId() == null) {
+        //
+        if (libro.getId()==null) {
             String nombreImg = uploadFiles.saveImg(file);
             libro.setImagen(nombreImg);
         } else {
@@ -56,12 +55,13 @@ public class LibrosController {
     }
 
     @GetMapping("/edit/{id}")
-    public String edit(@PathVariable Long id, Model model) {
+    public String edit(@PathVariable Integer id, Model model) {
         Libro libro = new Libro();
         Optional<Libro> optional = librosService.get(id);
         libro = optional.get();
         LOGGER.info("Libro a editar: " + libro);
-        return "libros/edit";
+        model.addAttribute("libro", libro);
+        return "libros/EditarLibros";
     }
 
     @PostMapping("/update")
@@ -69,33 +69,25 @@ public class LibrosController {
         Libro l = new Libro();
         l = librosService.get(libro.getId()).get();
         if (file.isEmpty()) {
-
             libro.setImagen(l.getImagen());
         } else {
-
             if (!l.getImagen().equals("default.jpg")) {
-                uploadFiles.deleteImg("l.getImagen()");
+                uploadFiles.deleteImg(l.getImagen());
             }
             String nombreImg = uploadFiles.saveImg(file);
             libro.setImagen(nombreImg);
         }
-        libro.setUsuario(l.getUsuario());
         librosService.update(libro);
         return "redirect:/libros";
     }
 
     @GetMapping("/delete/{id}")
-    public String delete(@PathVariable Long id) throws IOException {
+    public String delete(@PathVariable Integer id) throws IOException {
         Libro l = new Libro();
         l = librosService.get(id).get();
         if (!l.getImagen().equals("default.jpg")) {
-            uploadFiles.deleteImg("l.getImagen()");
-        } else {
-            try {
-                uploadFiles.deleteImg(l.getImagen());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            uploadFiles.deleteImg(l.getImagen());
+
         }
         librosService.delete(id);
         return "redirect:/libros";

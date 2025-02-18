@@ -1,29 +1,29 @@
 package com.Proyecto.model;
 
 import java.util.List;
-
-import org.springframework.data.annotation.Id;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "usuarios")
 public class Usuario {
     @Id
-    private Long dni;
-    private String Nombre;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String nombre;
     private String email;
     private String tlf;
     private String direccion;
+    private String password;
+
+    @ToString.Exclude
     @OneToMany(mappedBy = "usuario")
     private List<Compra> compras;
+
+    @ToString.Exclude
     @OneToMany(mappedBy = "usuario")
     private List<Libro> libros;
-
 }
