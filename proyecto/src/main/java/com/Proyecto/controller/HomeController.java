@@ -26,6 +26,8 @@ import com.Proyecto.service.DetalleCompraService;
 import com.Proyecto.service.LibrosService;
 import com.Proyecto.service.UsuarioService;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/")
 public class HomeController {
@@ -42,8 +44,9 @@ public class HomeController {
     Compra compra = new Compra();
 
     @GetMapping("")
-    public String home(Model model) {
+    public String home(Model model,HttpSession session) {
         model.addAttribute("libros", librosService.getAll());
+        model.addAttribute("session", session.getAttribute("usuario"));
         return "usuario/homeUsuario";
 
     }
@@ -104,26 +107,29 @@ public class HomeController {
     }
 
     @GetMapping("/getCarro")
-    public String getCarro(Model model) {
+    public String getCarro(Model model, HttpSession session) {
         model.addAttribute("carro", detallesCompra);
         model.addAttribute("compra", compra);
+        model.addAttribute("session", session.getAttribute("usuario"));
         return "/usuario/carro";
     }
 
     @GetMapping("/ResumenCompra")
-    public String ResumenCompra(Model model) {
-        Usuario usuario = usuarioService.findById(1).get();
+    public String ResumenCompra(Model model, HttpSession session) {
+        Usuario usuario = usuarioService.findById(Integer.parseInt(session.getAttribute("usuario").toString().toString())
+        ).get();
+
         model.addAttribute("carro", detallesCompra);
         model.addAttribute("compra", compra);
         model.addAttribute("usuario", usuario);
         return "/usuario/ResumenCompra";
     }
     @GetMapping("/saveCompra")
-    public String saveCompra(){
+    public String saveCompra(HttpSession session){
         Date fecha = new Date();
         compra.setFecha(fecha);
         compra.setNumCompra(compraService.GenerarNumCompra());
-        Usuario usuario = usuarioService.findById(1).get();
+        Usuario usuario = usuarioService.findById(Integer.parseInt(session.getAttribute("usuario").toString().toString())).get();
         compra.setUsuario(usuario);  
         compraService.save(compra);
         for (DetalleCompra detalle : detallesCompra) {

@@ -8,17 +8,20 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
 import com.Proyecto.model.Libro;
 import com.Proyecto.model.Usuario;
 import com.Proyecto.service.LibrosService;
 import com.Proyecto.service.UploadFiles;
+import com.Proyecto.service.UsuarioService;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/libros")
@@ -28,6 +31,8 @@ public class LibrosController {
     private LibrosService librosService;
     @Autowired
     private UploadFiles uploadFiles;
+    @Autowired
+    private UsuarioService usuarioService;
 
     @GetMapping("")
     public String MostrarLibros(Model model) {
@@ -41,11 +46,11 @@ public class LibrosController {
     }
 
     @PostMapping("/save")
-    public String save(Libro libro, @RequestParam("img") MultipartFile file) throws IOException {
-        Usuario usuario = new Usuario(1, "", "", "", "", "", null, null, null);
-        libro.setUsuario(usuario);
+    public String save(Libro libro, @RequestParam("img") MultipartFile file, HttpSession session) throws IOException {
+        Usuario u = usuarioService.findById((Integer) session.getAttribute("usuario")).get();
+        libro.setUsuario(u);
         //
-        if (libro.getId()==null) {
+        if (libro.getId() == null) {
             String nombreImg = uploadFiles.saveImg(file);
             libro.setImagen(nombreImg);
         } else {
