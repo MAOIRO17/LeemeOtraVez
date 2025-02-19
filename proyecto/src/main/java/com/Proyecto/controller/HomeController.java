@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.Proyecto.model.Compra;
 import com.Proyecto.model.DetalleCompra;
 import com.Proyecto.model.Libro;
+import com.Proyecto.model.Usuario;
 import com.Proyecto.service.LibrosService;
+import com.Proyecto.service.UsuarioService;
+
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -24,6 +27,8 @@ public class HomeController {
     private final Logger log = LoggerFactory.getLogger(HomeController.class);
     @Autowired
     private LibrosService librosService;
+    @Autowired
+    private UsuarioService usuarioService;
     List<DetalleCompra> detallesCompra = new ArrayList<DetalleCompra>();
     Compra compra = new Compra();
 
@@ -93,5 +98,13 @@ public class HomeController {
         model.addAttribute("carro", detallesCompra);
         model.addAttribute("compra", compra);
         return "/usuario/carro";
+    }
+    @GetMapping("/ResumenCompra")
+    public String ResumenCompra(Model model) {
+        Usuario usuario=usuarioService.findById(1).get();
+        model.addAttribute("carro", detallesCompra);
+        model.addAttribute("compra", compra);
+        model.addAttribute("usuario", usuario);
+        return "/usuario/ResumenCompra";
     }
 }
