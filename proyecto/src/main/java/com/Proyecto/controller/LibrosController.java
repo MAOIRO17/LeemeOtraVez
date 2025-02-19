@@ -42,7 +42,7 @@ public class LibrosController {
 
     @PostMapping("/save")
     public String save(Libro libro, @RequestParam("img") MultipartFile file) throws IOException {
-        Usuario usuario = new Usuario(1, "", "", "", "", "", null, null);
+        Usuario usuario = new Usuario(1, "", "", "", "", "", null, null, null);
         libro.setUsuario(usuario);
         //
         if (libro.getId()==null) {

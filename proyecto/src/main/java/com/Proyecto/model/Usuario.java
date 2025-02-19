@@ -17,6 +17,7 @@ public class Usuario {
     private String email;
     private String tlf;
     private String direccion;
+    private String tipo;
     private String password;
 
     @ToString.Exclude

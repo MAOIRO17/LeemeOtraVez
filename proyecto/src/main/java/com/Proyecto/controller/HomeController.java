@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -133,6 +134,14 @@ public class HomeController {
         detallesCompra.clear();
         return "redirect:/";
     
-    }}
+    }
+    @PostMapping("/buscar")
+    public String buscarLibro(@RequestParam String titulo, Model model) {
+        List<Libro> libros = librosService.getAll().stream().filter(l -> l.getTitulo().contains(titulo))
+                .collect(Collectors.toList());
+        model.addAttribute("libros", libros);
+        return "usuario/homeUsuario";
+    }
+}
     
 

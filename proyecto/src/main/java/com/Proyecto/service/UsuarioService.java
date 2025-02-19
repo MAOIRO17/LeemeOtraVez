@@ -6,5 +6,6 @@ import com.Proyecto.model.Usuario;
 
 public interface UsuarioService {
     Optional<Usuario> findById(Integer id);
+    Usuario save(Usuario usuario);
 ;
 }
