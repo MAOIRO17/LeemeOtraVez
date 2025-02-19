@@ -14,13 +14,14 @@ public class DetalleCompra {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    private Integer id;
+    private String titulo;
     private double cantidad;
+    private double precio;
     private double precioTotal;
 
     @ManyToOne
-    private Compra compra;  
+    private Compra compra;
 
     @ManyToOne
     private Libro libro;

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class AdminController {
 @Autowired
 private LibrosService librosService;
+
     @GetMapping("")
     public String PagPrincipal(Model model) {
         List<Libro> libros = librosService.getAll();

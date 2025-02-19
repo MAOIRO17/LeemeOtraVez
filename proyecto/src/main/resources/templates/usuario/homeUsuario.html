@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xlms:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8" />
     <meta
@@ -18,44 +18,47 @@
     />
 
     <!-- Custom styles for this template -->
-    <link href="@{..//css/heroic-features.css" rel="stylesheet}" />
+    <link th:href="@{/css/heroic-features.css}" rel="stylesheet" />
   </head>
 
   <body>
     <!-- Navigation -->
-   <div th:include "usuario/templateUsuario.html::header">
-    
-   </div>
-
+    <div th:include="usuario/TemplateUsuario.html::header"></div>
     <!-- Page Content -->
     <div class="container">
       <!-- Jumbotron Header -->
       <header class="jumbotron my-4">
         <h1 class="display-3">Bienvenido a Spring Ecommerce 2021</h1>
-        <p class="lead">Tu tienda de libros en Línea</p>
+        <p class="lead">Tu tienda de productos en Línea</p>
       </header>
 
       <!-- Page Features -->
       <div class="row text-center">
         <div class="col-lg-3 col-md-6 mb-4" th:each="libro : ${libros}">
           <div class="card h-100">
-            <img class="card-img-top" th:src="@{/imgs/{img}(img=${libro.imagen})}" alt="">
+            <img
+              class="card-img-top"
+              th:src="@{/imgs/{img}(img=${libro.imagen})}"
+              alt=""
+            />
             <div class="card-body">
-              <p class="card-text" th:text="${libro.nombre}"></p>
+              <p class="card-text" th:text="${libro.titulo}"></p>
             </div>
             <div class="card-footer">
-              <a href="productohome.html" class="btn btn-success">Ver libro</a>
+              <a th:href="@{/libroshome/{id}(id=${libro.id})}" class="btn btn-success">Ver libro</a>
             </div>
           </div>
         </div>
+      </div>
       <!-- /.row -->
     </div>
     <!-- /.container -->
 
     <!-- Footer -->
-    <div th:include="usuario/templateUsuario.html::footer"></div>
+    <div th:include="usuario/TemplateUsuario.html::footer"></div>
+
     <!-- Bootstrap core JavaScript -->
-    <script th:src="@{vendor/jquery/jquery.min.js}"></script>
-    <script src="@{vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+    <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
   </body>
 </html>

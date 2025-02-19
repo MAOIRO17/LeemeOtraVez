@@ -77,6 +77,7 @@ public class LibrosController {
             String nombreImg = uploadFiles.saveImg(file);
             libro.setImagen(nombreImg);
         }
+        libro.setUsuario(l.getUsuario());
         librosService.update(libro);
         return "redirect:/libros";
     }
