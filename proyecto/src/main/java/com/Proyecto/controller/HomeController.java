@@ -1,8 +1,10 @@
 package com.Proyecto.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,16 +12,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import com.Proyecto.model.Compra;
 import com.Proyecto.model.DetalleCompra;
 import com.Proyecto.model.Libro;
 import com.Proyecto.model.Usuario;
+import com.Proyecto.service.CompraService;
+import com.Proyecto.service.DetalleCompraService;
 import com.Proyecto.service.LibrosService;
 import com.Proyecto.service.UsuarioService;
-
-import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @RequestMapping("/")
@@ -29,6 +33,10 @@ public class HomeController {
     private LibrosService librosService;
     @Autowired
     private UsuarioService usuarioService;
+    @Autowired
+    private CompraService compraService;
+    @Autowired
+    private DetalleCompraService detalleCompraService;
     List<DetalleCompra> detallesCompra = new ArrayList<DetalleCompra>();
     Compra compra = new Compra();
 
@@ -63,12 +71,12 @@ public class HomeController {
         detalleCompra.setTitulo(libro.getTitulo());
         detalleCompra.setPrecioTotal(libro.getPrecio() * cantidad);
         detalleCompra.setLibro(libro);
-        Integer idLibro=libro.getId();
+        Integer idLibro = libro.getId();
         boolean existe = detallesCompra.stream().anyMatch(l -> l.getLibro().getId() == idLibro);
         if (!existe) {
-            detallesCompra.add(detalleCompra);        
+            detallesCompra.add(detalleCompra);
         }
-        
+
         sumaTotal = detallesCompra.stream().mapToDouble(dt -> dt.getPrecioTotal()).sum();
 
         compra.setPrecioTotal(sumaTotal);
@@ -93,18 +101,38 @@ public class HomeController {
         model.addAttribute("compra", compra);
         return "/usuario/carro";
     }
+
     @GetMapping("/getCarro")
     public String getCarro(Model model) {
         model.addAttribute("carro", detallesCompra);
         model.addAttribute("compra", compra);
         return "/usuario/carro";
     }
+
     @GetMapping("/ResumenCompra")
     public String ResumenCompra(Model model) {
-        Usuario usuario=usuarioService.findById(1).get();
+        Usuario usuario = usuarioService.findById(1).get();
         model.addAttribute("carro", detallesCompra);
         model.addAttribute("compra", compra);
         model.addAttribute("usuario", usuario);
         return "/usuario/ResumenCompra";
     }
-}
+    @GetMapping("/saveCompra")
+    public String saveCompra(){
+        Date fecha = new Date();
+        compra.setFecha(fecha);
+        compra.setNumCompra(compraService.GenerarNumCompra());
+        Usuario usuario = usuarioService.findById(1).get();
+        compra.setUsuario(usuario);  
+        compraService.save(compra);
+        for (DetalleCompra detalle : detallesCompra) {
+            detalle.setCompra(compra);
+            detalleCompraService.save(detalle);
+        }
+        compra = new Compra();
+        detallesCompra.clear();
+        return "redirect:/";
+    
+    }}
+    
+

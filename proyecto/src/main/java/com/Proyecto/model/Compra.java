@@ -1,6 +1,6 @@
 package com.Proyecto.model;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -23,7 +23,8 @@ public class Compra {
     @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private LocalDateTime fecha;
+    private String numCompra;
+    private Date fecha;
     private double precioTotal;
 
     @ManyToOne
