@@ -2,6 +2,7 @@ package com.Proyecto.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,5 +49,9 @@ public class CompraServiceImpl implements CompraService {
     @Override
     public List<Compra> findByUsuarioId(Integer usuario) {
         return compraRepository.findByUsuarioId(usuario);
+    }
+    @Override
+    public Optional<Compra> findById(Integer id) {
+        return compraRepository.findById(id);
     }
 }

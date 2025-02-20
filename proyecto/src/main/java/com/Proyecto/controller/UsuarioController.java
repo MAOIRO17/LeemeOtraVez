@@ -16,6 +16,7 @@ import com.Proyecto.service.UsuarioService;
 import jakarta.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -58,11 +59,19 @@ public class UsuarioController {
     }
 
     @GetMapping("/compras")
-    public String compras(HttpSession session,Model model) {
+    public String compras(HttpSession session, Model model) {
         model.addAttribute("session", session.getAttribute("usuario"));
         Usuario usuario = usuarioService.findById((Integer) session.getAttribute("usuario")).get();
         List<Compra> compras = compraService.findByUsuarioId(usuario.getId());
         model.addAttribute("compras", compras);
         return "/usuario/compras";
+    }
+
+    @GetMapping("/detalles/{id}")
+    public String detallesCompra(@PathVariable Integer id, Model model, HttpSession session) {
+        Optional<Compra> compra = compraService.findById(id);
+        model.addAttribute("detalles", compra.get().getDetalleCompra());
+        model.addAttribute("session", session.getAttribute("usuario"));
+        return "/usuario/DetallesCompras";
     }
 }

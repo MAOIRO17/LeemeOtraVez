@@ -56,7 +56,7 @@
                     <td th:text="${compra.fecha}"></td>
                     <td th:text="${compra.precioTotal}"></td>
                     <td>
-                      <a href="detallecompra.html" class="btn btn-success"
+                      <a th:href="@{/usuario/detalles/{id} (id=${compra.id})}" class="btn btn-success"
                         >Ver Detalle</a
                       >
                     </td>
