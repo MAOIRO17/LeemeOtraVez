@@ -20,7 +20,7 @@ public class CompraServiceImpl implements CompraService {
     }
 
     @Override
-    public List<Compra> findAll() {
+    public List<Compra> getAll() {
         return compraRepository.findAll();
     }
 

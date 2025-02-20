@@ -9,7 +9,7 @@ import com.Proyecto.model.Compra;
 
 @Service
 public interface CompraService {
-    List<Compra> findAll();
+    List<Compra> getAll();
     Compra save(Compra compra);
     String GenerarNumCompra();
     List<Compra> findByUsuarioId(Integer usuario);
