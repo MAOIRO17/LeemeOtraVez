@@ -11,4 +11,5 @@ public interface CompraService {
     List<Compra> findAll();
     Compra save(Compra compra);
     String GenerarNumCompra();
+    List<Compra> findByUsuarioId(Integer usuario);
 }

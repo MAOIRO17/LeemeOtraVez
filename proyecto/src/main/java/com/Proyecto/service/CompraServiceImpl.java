@@ -45,4 +45,8 @@ public class CompraServiceImpl implements CompraService {
 
         return numConc;
     }
+    @Override
+    public List<Compra> findByUsuarioId(Integer usuario) {
+        return compraRepository.findByUsuarioId(usuario);
+    }
 }
