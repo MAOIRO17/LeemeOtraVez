@@ -2,23 +2,17 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>Spring eCommerce</title>
+    <title>LéemeOtravez</title>
 
     <!-- Bootstrap core CSS -->
-    <link
-      th:href="@{/JqueryBootStrap/bootstrap/css/bootstrap.min.css}"
-      rel="stylesheet"
-    />
+    <link th:href="@{/JqueryBootStrap/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
 
     <!-- Custom styles for this template -->
-    <link th:href="@{css/heroic-features.css}" rel="stylesheet" />
+    <link th:href="@{/css/heroic-features.css}" rel="stylesheet" />
   </head>
 
   <body>
@@ -26,13 +20,9 @@
     <div th:fragment="header">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-          <a class="navbar-brand" th:href="@{/}">Spring eCommerce</a>
+          <a class="navbar-brand" th:href="@{/}">LéemeOtravez</a>
 
-          <form
-            class="form-inline my-2 my-lg-0"
-            method="post"
-            th:action="@{/buscar}"
-          >
+          <form class="form-inline my-2 my-lg-0" method="post" th:action="@{/buscar}">
             <input
               class="form-control mr-sm-2"
               type="search"
@@ -71,17 +61,13 @@
       </nav>
     </div>
 
-    <!-- Navigation -->
+    <!-- Navigation for usuario -->
     <div th:fragment="header-user">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-          <a class="navbar-brand" th:href="@{/}">Spring eCommerce</a>
+          <a class="navbar-brand" th:href="@{/}">LéemeOtravez</a>
 
-          <form
-            class="form-inline my-2 my-lg-0"
-            method="post"
-            th:action="@{/search}"
-          >
+          <form class="form-inline my-2 my-lg-0" method="post" th:action="@{/search}">
             <input
               class="form-control mr-sm-2"
               type="search"
@@ -121,13 +107,10 @@
                   USUARIO
                 </a>
 
-                <div
-                  class="dropdown-menu"
-                  aria-labelledby="navbarDropdownMenuLink"
-                >
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" th:href="@{/getCarro}">Carrito</a>
                   <a class="dropdown-item" th:href="@{/usuario/compras}">Compras</a>
-                  <a class="dropdown-item" th:href="@{usuario/logout}">Logout</a>
+                  <a class="dropdown-item" th:href="@{/usuario/logout}">Logout</a>
                 </div>
               </li>
             </ul>
@@ -139,18 +122,26 @@
     <!-- Footer -->
     <div th:fragment="footer">
       <footer class="py-5 bg-dark">
-        <div class="container">
-          <p class="m-0 text-center text-white">
-            Copyright &copy; Spring eCommerce 2021
+        <div class="container text-center">
+          <p class="m-0 text-white">&copy; LéemeOtravez</p>
+          <div>
+            <br>
+            <a class="iconos-footer" th:href="'mailto:LeemeOtraVez@outlook.es'" title="Hotmail">
+              <img th:src="@{/iconos/outlook.png}" alt="Hotmail" />
+            </a>
+            <a class="iconos-footer" th:href="@{'https://x.com/LeemeOtraVez'}" title="Twitter">
+              <img th:src="@{/iconos/twitter.png}" alt="Twitter" />
+            </a>
+            <a class="iconos-footer" th:href="@{'https://www.instagram.com/leemeotravez_/?utm_source=ig_web_button_share_sheet'}" title="Instagram">
+              <img th:src="@{/iconos/insta.png}" alt="Instagram" />
+            </a>
+          </div>
+          <br>
+          <p class="m-0 text-white">
+            <a th:href="@{/ficheros/PoliticaPriv.pdf}" target="_blank">Política de Privacidad</a> |
+            <a th:href="@{/ficheros/AvisosLegales.pdf}" target="_blank">Otros avisos legales</a>
           </p>
         </div>
-        <div class="container">
-          <p class="m-0 text-center text-white">
-            <a href="/ficheros/PoliticaPriv.pdf">Política de Privacidad</a>
-            <a href="/ficheros/AvisosLegales.pdf">Otros avisos legales</a>
-          </p>
-        </div>
-        <!-- /.container -->
       </footer>
     </div>
 

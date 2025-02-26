@@ -6,3 +6,25 @@
 body {
   padding-top: 56px;
 }
+
+.logo{
+  height: 55px;
+  width: auto;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+a:hover {
+  color: #f8f9fa;
+  text-decoration: none;
+}
+.iconos-footer img{
+  height: 52px;
+  margin-left: 40px;
+  text-decoration: none;
+
+}
+footer p{
+  font-size: 15px;
+}

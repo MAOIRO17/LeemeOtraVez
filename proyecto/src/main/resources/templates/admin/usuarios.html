@@ -33,7 +33,7 @@
         <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
         <li class="breadcrumb-item active">Ver Usuarios</li>
       </ol>
-      <h2>Usuarios</h2>
+ 
       <table class="table">
         <thead>
           <tr>
@@ -43,11 +43,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr th:each="usuario : ${usuarios}">
-            <th th:text="${usuario.nombre}"></th>
-            <th th:text="${usuario.email}"></th>
-            <th th:text="${usuario.direccion}"></th>
-          </tr>
+          <tr th:each="usuario:${usuarios}">
+            <td th:text="${usuario.nombre}"></td>
+            <td th:text="${usuario.email}"></td>
+            <td th:text="${usuario.direccion}"></td>
+          </tr>       
         </tbody>
       </table>
     </div>

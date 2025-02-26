@@ -1,73 +1,125 @@
-<!-- Navigation -->
-<div th:fragment="header">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" th:href="@{/admin}">LéemeOtravez</a>
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>LéemeOtravez</title>
+    <link th:href="@{/css/styles.css}" rel="stylesheet" />
+  </head>
+  <body>
+    <div th:fragment="header">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" th:href="@{/admin}"
+            ><img
+              class="logo"
+              th:src="@{/iconos/Logo.png}"
+              alt="Logo"
+            />LéemeOtravez</a
+          >
 
-      <form class="form-inline my-2 my-lg-0" method="post" action="#">
-        <input
-          class="form-control mr-sm-2"
-          type="search"
-          placeholder="Buscar"
-          aria-label="Search"
-          name="nombre"
-          autocomplete="off"
-        />
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-          Buscar
-        </button>
-      </form>
+          <form class="form-inline my-2 my-lg-0" method="post" action="#">
+            <input
+              class="form-control mr-sm-2"
+              type="search"
+              placeholder="Buscar"
+              aria-label="Search"
+              name="nombre"
+              autocomplete="off"
+            />
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+              Buscar
+            </button>
+          </form>
 
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarResponsive"
-        aria-controls="navbarResponsive"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item dropdown">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarResponsive"
+            aria-controls="navbarResponsive"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdownMenuLink"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  ADMINISTRADOR
+                </a>
+                <div
+                  class="dropdown-menu"
+                  aria-labelledby="navbarDropdownMenuLink"
+                >
+                  <a class="dropdown-item" th:href="@{/libros}">Libros</a>
+                  <a class="dropdown-item" th:href="@{/admin/usuarios}"
+                    >Usuarios</a
+                  >
+                  <a class="dropdown-item" th:href="@{/admin/compras}"
+                    >Compras</a
+                  >
+                  <a class="dropdown-item" th:href="@{/usuario/logout}"
+                    >Logout</a
+                  >
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Footer -->
+    <div th:fragment="footer">
+      <footer class="py-5 bg-dark">
+        <div class="container text-center">
+          <p class="m-0 text-white">&copy; LéemeOtravez</p>
+          <div>
+            <br />
             <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="navbarDropdownMenuLink"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
+              class="iconos-footer"
+              th:href="'mailto:LeemeOtraVez@outlook.es'"
+              title="Hotmail"
             >
-              ADMINISTRADOR
+              <img th:src="@{/iconos/outlook.png}" alt="Hotmail" />
             </a>
-
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" th:href="@{/libros}">Libros</a>
-              <a class="dropdown-item" th:href="@{/admin/usuarios}">Usuarios</a>
-              <a class="dropdown-item" th:href="@{/admin/compras}">Compras</a>
-              <a class="dropdown-item" th:href="@{/usuario/logout}">Logout</a>
-            </div>
-          </li>
-        </ul>
-      </div>
+            <a
+              class="iconos-footer"
+              th:href="@{'https://x.com/LeemeOtraVez'}"
+              title="Twitter"
+            >
+              <img th:src="@{/iconos/twitter.png}" alt="Twitter" />
+            </a>
+            <a
+              class="iconos-footer"
+              th:href="@{'https://www.instagram.com/leemeotravez_/?utm_source=ig_web_button_share_sheet'}"
+              title="Instagram"
+            >
+              <img th:src="@{/iconos/insta.png}" alt="Instagram" />
+            </a>
+          </div>
+          <br />
+          <p class="m-0 text-white">
+            <a th:href="@{/ficheros/PoliticaPriv.pdf}" target="_blank"
+              >Política de Privacidad</a
+            >
+            |
+            <a th:href="@{/ficheros/AvisosLegales.pdf}" target="_blank"
+              >Otros avisos legales</a
+            >
+          </p>
+        </div>
+      </footer>
     </div>
-  </nav>
-</div>
-
-<!-- Footer -->
-<div th:fragment="footer">
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; LéemeOtravez</p>
-    </div>
-    <div class="container">
-      <p class="m-0 text-center text-white">
-        <a href="/ficheros/PoliticaPriv.pdf">Política de Privacidad</a>
-        <a href="/ficheros/AvisosLegales.pdf">Otros avisos legales</a>
-      </p>
-    </div>
-  </footer>
-</div>
+  </body>
+</html>
