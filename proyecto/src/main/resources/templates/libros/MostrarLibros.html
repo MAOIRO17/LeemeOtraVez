@@ -36,7 +36,7 @@
         <li class="breadcrumb-item active">Ver Libros</li>
       </ol>
 
-      <a class="btn btn-primary" th:href="@{/libros/crear}">Añadir Libro</a
+      <a class="btn btn-brown" th:href="@{/libros/crear}">Añadir Libro</a
       ><br />
       <br />
       <h2>Libros</h2>
@@ -48,8 +48,8 @@
             <th scope="col">Categoría</th>
             <th scope="col">Cantidad</th>
             <th scope="col">Precio</th>
-            <th scope="col">Acción</th>
-            <th scope="col">Acción</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Eliminar</th>
           </tr>
         </thead>
         <tbody>
@@ -61,7 +61,7 @@
             <td th:text="${libro.precio}"></td>
             <td>
               <a
-                class="btn btn-warning"
+                class="btn btn-brown"
                 th:href="@{libros/edit/{id} (id=${libro.id})}"
                 >Editar</a
               >

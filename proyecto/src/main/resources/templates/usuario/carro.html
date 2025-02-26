@@ -34,7 +34,7 @@
 
       <!-- Page Heading/Breadcrumbs -->
       <h1 class="mt-4 mb-3">
-        Spring eCommerce <small>Carrito</small>
+        Carrito
       </h1>
 
       <ol class="breadcrumb">
@@ -54,7 +54,7 @@
                   <th scope="col">Precio</th>
                   <th scope="col">Cantidad</th>
                   <th scope="col">Total</th>
-                  <th scope="col">Acción</th>
+                  <th scope="col">Eliminar</th>
                 </tr>
               </thead>
               <tbody>
@@ -74,7 +74,7 @@
 
             <ul class="list-group">
               <li class="list-group-item"><h5 th:text="${compra.precioTotal}+€"></h5></li>
-              <a th:href="@{/ResumenCompra}" class="btn btn-dark">Ver Compra</a>
+              <a th:href="@{/ResumenCompra}" class="btn btn-brown">Ver Compra</a>
             </ul>
           </div>
 

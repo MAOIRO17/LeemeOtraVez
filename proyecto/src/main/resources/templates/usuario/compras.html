@@ -9,7 +9,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>Spring eCommerce</title>
+    <title>LéemeOtraVez</title>
 
     <!-- Bootstrap core CSS -->
     <link
@@ -29,7 +29,7 @@
     <!-- Page Content -->
     <div class="container">
       <!-- Page Heading/Breadcrumbs -->
-      <h1 class="mt-4 mb-3">Spring eCommerce <small>Compras</small></h1>
+      <h1 class="mt-4 mb-3">Compras</h1>
 
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
@@ -56,8 +56,8 @@
                     <td th:text="${compra.fecha}"></td>
                     <td th:text="${compra.precioTotal}"></td>
                     <td>
-                      <a th:href="@{/usuario/detalles/{id} (id=${compra.id})}" class="btn btn-success"
-                        >Ver Detalle</a
+                      <a th:href="@{/usuario/detalles/{id} (id=${compra.id})}" class="btn btn-brown"
+                        >Ver Detalles</a
                       >
                     </td>
                   </tr>

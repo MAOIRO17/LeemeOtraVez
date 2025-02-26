@@ -32,14 +32,15 @@ document.addEventListener("DOMContentLoaded", function () {
       valid = false;
     } else if (!passwordPatron.test(password)) {
       alert(
-        "La contraseña debe tener al menos 8 caracteres con una letra mayúscula y una minúscula ."
+        "La contraseña debe tener al menos 8 caracteres con una letra mayúscula y una minúscula."
       );
       valid = false;
     }
 
-    if (!valid) {
-      event.preventDefault();
+    if (valid) {
+      alert("Registro correcto");
+    } else {
+      event.preventDefault(); 
     }
   });
-  alert("Registro correcto");
 });

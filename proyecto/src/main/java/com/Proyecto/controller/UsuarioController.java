@@ -41,7 +41,7 @@ public class UsuarioController {
 
     @GetMapping("/login")
     public String login() {
-        return "/usuario/loginUsuario";
+        return "usuario/loginUsuario";
     }
 
     @PostMapping("/acceder")

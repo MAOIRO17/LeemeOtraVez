@@ -106,8 +106,8 @@ public class HomeController {
         return "/usuario/carro";
     }
 
-    @GetMapping("/getCarro")
-    public String getCarro(Model model, HttpSession session) {
+    @GetMapping("/carro")
+    public String carro(Model model, HttpSession session) {
         model.addAttribute("carro", detallesCompra);
         model.addAttribute("compra", compra);
         model.addAttribute("session", session.getAttribute("usuario"));

@@ -1,30 +1,69 @@
-/*!
- * Start Bootstrap - Heroic Features (https://startbootstrap.com/templates/heroic-features)
- * Copyright 2013-2020 Start Bootstrap
- * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-heroic-features/blob/master/LICENSE)
- */
 body {
   padding-top: 56px;
 }
 
-.logo{
+.logo {
   height: 55px;
   width: auto;
 }
+
 a {
   color: white;
   text-decoration: none;
 }
+
 a:hover {
   color: #f8f9fa;
   text-decoration: none;
 }
-.iconos-footer img{
+
+.iconos-footer img {
   height: 52px;
   margin-left: 40px;
-  text-decoration: none;
-
 }
-footer p{
+
+footer p {
   font-size: 15px;
+}
+
+#TituloLibro {
+  text-align: center;
+}
+
+#AñadirCarro,
+#FotoLibro {
+  margin-left: 35%;
+}
+
+.navbar,
+.footer {
+  background-color: #8b5a2b !important;
+}
+
+.footer {
+  padding: 50px 10px;
+}
+.navbar-brand{ 
+  font-family: "Candara", cursive, sans-serif;
+  font-size: 30px ;
+}
+.card-footer .btn {
+  background-color: #556b2f;
+  border: none;
+}
+
+.breadcrumb {
+  background-color: #f0bc8c;
+  color: white;
+}
+
+.btn-brown {
+  background-color: #8b5a2b;
+  color: white;
+  border: none;
+}
+
+.btn-brown:hover {
+  background-color: #704214;
+  color: white;
 }

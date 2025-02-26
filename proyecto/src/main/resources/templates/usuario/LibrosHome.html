@@ -28,10 +28,10 @@
     <!-- Page Content -->
     <div class="container">
       <!-- Page Heading/Breadcrumbs -->
-      <h1 class="mt-4 mb-3">Spring eCommerce <small>Producto</small></h1>
+      <h1 class="mt-4 mb-3">Dettalles del Libro</h1>
 
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+        <li style="color:blue" class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
         <li class="breadcrumb-item active">Libro</li>
       </ol>
 
@@ -63,7 +63,7 @@
                   <li class="list-group-item" th:text=" 'Precio: ' + ${libro.precio} + €"></li>
                   </li>
                 </ul><br>
-                <button type="submit" class="btn btn-dark">
+                <button id="AñadirCarro" type="submit" class="btn btn-dark">
                   Añadir al carrito
                 </button>
               </form>
