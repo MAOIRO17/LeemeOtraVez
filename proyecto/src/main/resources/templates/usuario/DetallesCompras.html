@@ -18,22 +18,17 @@
  />
  
  <!-- Custom styles for this template -->
- <link th:href="@{/css/heroic-features.css}" rel="stylesheet" />
+ <link th:href="@{/css/estilos.css}" rel="stylesheet" />
  </head>
  
  <body>
 
 <body>
 
-  <!-- Navigation -->
   <div th:include="usuario/TemplateUsuario.html::header" th:if="${session == null}"></div>
   <div th:include="usuario/TemplateUsuario.html::header-user" th:unless="${session == null}"></div>
 
-    <!-- Page Content -->
     <div class="container">
-
-
-      <!-- Page Heading/Breadcrumbs -->
       <h1 class="mt-4 mb-3">
         Detalles de la compra
       </h1>
@@ -43,8 +38,6 @@
         <li class="breadcrumb-item"><a th:href="@{/usuario/compras}">Compras</a></li>
         <li class="breadcrumb-item active">Detalle de Compra</li>
       </ol>
-
-      <!-- Blog Post -->
       <div class="card mb-4">
         <div class="card-body">
           <div class="row">
@@ -73,12 +66,8 @@
       </div>
     </div>
   </div>
-  <!-- /.container -->
-
-  <!-- Footer -->
   <div th:include="usuario/TemplateUsuario.html::footer"></div>
 
-     <!-- Bootstrap core JavaScript -->
      <script th:src="@{/JqueryBootStrap/jquery/jquery.min.js}"></script>
      <script th:src="@{/JqueryBootStrap/bootstrap/js/bootstrap.bundle.min.js}"></script>
    </body>

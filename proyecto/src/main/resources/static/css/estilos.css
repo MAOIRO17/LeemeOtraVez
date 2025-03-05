@@ -1,10 +1,6 @@
 body {
   padding-top: 56px;
-}
-
-.logo {
-  height: 55px;
-  width: auto;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 a {
@@ -43,9 +39,9 @@ footer p {
 .footer {
   padding: 50px 10px;
 }
-.navbar-brand{ 
-  font-family: "Candara", cursive, sans-serif;
-  font-size: 30px ;
+.navbar-brand {
+  font-family: "Belleza", cursive;
+  font-size: 30px;
 }
 .card-footer .btn {
   background-color: #556b2f;
@@ -66,4 +62,11 @@ footer p {
 .btn-brown:hover {
   background-color: #704214;
   color: white;
+}
+.input-icon {
+  background-image: url("/iconos/Lupa.svg");
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  background-size: 16px;
+  padding-left: 35px;
 }

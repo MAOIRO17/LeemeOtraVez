@@ -1,96 +1,96 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">  
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
 
-<head>
+    <title>LéemeOtraVez</title>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+    <link
+      th:href="@{/JqueryBootStrap/bootstrap/css/bootstrap.min.css}"
+      rel="stylesheet"
+    />
 
-  <title>Spring eCommerce</title>
+    <link th:href="@{/css/estilos.css}" rel="stylesheet" />
+  </head>
 
+  <body>
+    <div
+      th:include="usuario/TemplateUsuario.html::header"
+      th:if="${session == null}"
+    ></div>
+    <div
+      th:include="usuario/TemplateUsuario.html::header-user"
+      th:unless="${session == null}"
+    ></div>
 
-  <!-- Bootstrap core CSS -->
-  <link
-  th:href="@{/JqueryBootStrap/bootstrap/css/bootstrap.min.css}"
-  rel="stylesheet"
-/>
-
-<!-- Custom styles for this template -->
-<link th:href="@{/css/heroic-features.css}" rel="stylesheet" />
-</head>
-
-<body>
-
-  <!-- Navigation -->
-  <div th:include="usuario/TemplateUsuario.html::header" th:if="${session == null}"></div>
-  <div th:include="usuario/TemplateUsuario.html::header-user" th:unless="${session == null}"></div>
-  
-
-    <!-- Page Content -->
     <div class="container">
-
-
-      <!-- Page Heading/Breadcrumbs -->
-      <h1 class="mt-4 mb-3">
-        Carrito
-      </h1>
+      <h1 class="mt-4 mb-3">Carrito</h1>
 
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
         <li class="breadcrumb-item active">Carrito</li>
       </ol>
 
-      <!-- Blog Post -->
       <div class="card mb-4">
         <div class="card-body">
           <div class="row">
-           <div class="col-lg-9">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">Producto</th>
-                  <th scope="col">Precio</th>
-                  <th scope="col">Cantidad</th>
-                  <th scope="col">Total</th>
-                  <th scope="col">Eliminar</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr th:each = "det : ${carro}">
-                  <td th:text="${det.titulo}"></td>
-                  <td th:text="${det.precio}+€"></td>
-                  <td th:text="${det.cantidad}"></td>
-                  <td th:text="${det.precioTotal}+€"></td>
-                  <td><a th:href="@{/delete/carro/{id}(id=${det.libro.id})}" class="btn btn-danger">Eliminar</a></td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="col-lg-9">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Eliminar</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="det : ${carro}">
+                    <td th:text="${det.titulo}"></td>
+                    <td th:text="${det.precio}+€"></td>
+                    <td th:text="${det.cantidad}"></td>
+                    <td th:text="${det.precioTotal}+€"></td>
+                    <td>
+                      <a
+                        th:href="@{/delete/carro/{id}(id=${det.libro.id})}"
+                        class="btn btn-danger"
+                        >Eliminar</a
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="col-lg-3">
+              <h2 class="card-title">SUBTOTAL</h2>
+
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <h5 th:text="${compra.precioTotal}+€"></h5>
+                </li>
+                <a th:href="@{/ResumenCompra}" class="btn btn-brown"
+                  >Ver Compra</a
+                >
+              </ul>
+            </div>
           </div>
-
-          <div class="col-lg-3">
-            <h2 class="card-title">SUBTOTAL</h2>
-
-            <ul class="list-group">
-              <li class="list-group-item"><h5 th:text="${compra.precioTotal}+€"></h5></li>
-              <a th:href="@{/ResumenCompra}" class="btn btn-brown">Ver Compra</a>
-            </ul>
-          </div>
-
         </div>
       </div>
     </div>
-    </div>
-    <!-- /.container -->
-
-    <!-- Footer -->
 
     <div th:include="usuario/TemplateUsuario.html::footer"></div>
 
-    <!-- Bootstrap core JavaScript -->
     <script th:src="@{/JqueryBootStrap/jquery/jquery.min.js}"></script>
-    <script th:src="@{/JqueryBootStrap/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <script
+      th:src="@{/JqueryBootStrap/bootstrap/js/bootstrap.bundle.min.js}"
+    ></script>
   </body>
-
-  </html>
+</html>

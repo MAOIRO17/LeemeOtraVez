@@ -11,30 +11,37 @@
 
     <title>LéemeOtravez</title>
 
-    <!-- Bootstrap core CSS -->
     <link
       th:href="@{/JqueryBootStrap/bootstrap/css/bootstrap.min.css}"
       rel="stylesheet"
     />
 
-    <!-- Custom styles for this template -->
-    <link th:href="@{/css/heroic-features.css}" rel="stylesheet" />
+    <link th:href="@{/css/estilos.css}" rel="stylesheet" />
   </head>
 
   <body>
-    <!-- Navigation -->
-    <div th:include="usuario/TemplateUsuario.html::header" th:if="${session == null}"></div>
-<div th:include="usuario/TemplateUsuario.html::header-user" th:unless="${session == null}"></div>
 
-    <!-- Page Content -->
+    <div
+      th:include="usuario/TemplateUsuario.html::header"
+      th:if="${session == null}"
+    ></div>
+    <div
+      th:include="usuario/TemplateUsuario.html::header-user"
+      th:unless="${session == null}"
+    ></div>
+
     <div class="container">
-      <!-- Jumbotron Header -->
+
       <header class="jumbotron my-4">
-        <h1 class="display-3">Bienvenido LéemeOtravez</h1>
-        <p class="lead">Tu tienda de libros de segunda mano</p>
+        <h1 class="display-3">Bienvenido LéemeOtravez</h1><br>
+        <p class="lead">
+          Una página web dedicada a la venta de libros de segunda mano, para
+          ahorrarte unos euros en la compra de distintos libros. Nuestra misión
+          es proporcionarte acceso a una amplia gama de títulos que abarcan
+          desde los clásicos atemporales hasta las últimas novedades.
+        </p>
       </header>
 
-      <!-- Page Features -->
       <div class="row text-center">
         <div class="col-lg-3 col-md-6 mb-4" th:each="libro : ${libros}">
           <div class="card h-100">
@@ -56,15 +63,14 @@
           </div>
         </div>
       </div>
-      <!-- /.row -->
-    </div>
-    <!-- /.container -->
 
-    <!-- Footer -->
+    </div>
+
     <div th:include="usuario/TemplateUsuario.html::footer"></div>
 
-    <!-- Bootstrap core JavaScript -->
     <script th:src="@{/JqueryBootStrap/jquery/jquery.min.js}"></script>
-    <script th:src="@{/JqueryBootStrap/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <script
+      th:src="@{/JqueryBootStrap/bootstrap/js/bootstrap.bundle.min.js}"
+    ></script>
   </body>
 </html>

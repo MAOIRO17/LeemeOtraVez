@@ -8,15 +8,13 @@
 
     <title>LéemeOtraVez</title>
 
-    <!-- Bootstrap core CSS -->
     <link th:href="@{/JqueryBootStrap/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
 
-    <!-- Custom styles for this template -->
-    <link th:href="@{/css/heroic-features.css}" rel="stylesheet" />
+    <link th:href="@{/css/estilos.css}" rel="stylesheet" />
   </head>
 
   <body>
-    <!-- Navigation -->
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
         <a class="navbar-brand" th:href="@{/}">LéemeOtraVez</a>
@@ -24,17 +22,9 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" th:href="@{/usuario/login}">Login</a>
-            </li>
-          </ul>
-        </div>
       </div>
     </nav><br>
 
-    <!-- Page Content -->
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-8 text-center"> 
@@ -76,10 +66,8 @@
       </form>
     </div>
 
-    <!-- Footer -->
     <div th:include="usuario/TemplateUsuario.html::footer"></div>
 
-    <!-- Bootstrap core JavaScript -->
     <script th:src="@{/JqueryBootStrap/jquery/jquery.min.js}"></script>
     <script th:src="@{/JqueryBootStrap/bootstrap/js/bootstrap.bundle.min.js}"></script>
     <script th:src="@{/JS/ValLogin.js}"></script>

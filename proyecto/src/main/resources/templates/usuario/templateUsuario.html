@@ -2,37 +2,47 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
     <meta name="description" content="" />
     <meta name="author" content="" />
 
     <title>LéemeOtravez</title>
 
-    <!-- Bootstrap core CSS -->
-    <link th:href="@{/JqueryBootStrap/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+    <link
+      th:href="@{/JqueryBootStrap/bootstrap/css/bootstrap.min.css}"
+      rel="stylesheet"
+    />
 
-    <!-- Custom styles for this template -->
-    <link th:href="@{/css/heroic-features.css}" rel="stylesheet" />
+    <link th:href="@{/css/estilos.css}" rel="stylesheet" />
   </head>
 
   <body>
-    <!-- Navigation -->
     <div th:fragment="header">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
           <a class="navbar-brand" th:href="@{/admin}">LéemeOtravez</a>
-    
+
           <div class="d-flex justify-content-center flex-grow-1">
-            <form class="form-inline my-2 my-lg-0 mx-auto" method="post" action="#">
+            <form
+              class="form-inline my-2 my-lg-0 mx-auto"
+              method="post"
+              th:action="@{/buscar}"
+            >
               <input
-                class="form-control mr-sm-2 rounded"
+                class="form-control mr-sm-2 rounded input-icon"
                 type="search"
                 placeholder="Buscar"
                 aria-label="Search"
-                name="nombre"
+                name="titulo"
                 autocomplete="off"
               />
-              <button class="btn btn-info my-2 my-sm-0 rounded px-2" type="submit">
+              <button
+                class="btn btn-info my-2 my-sm-0 rounded px-2"
+                type="submit"
+              >
                 Buscar
               </button>
             </form>
@@ -52,10 +62,19 @@
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
-                <a class="nav-link" th:href="@{/carro}">Carrito</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" th:href="@{/usuario/loginUsuario}">Login</a>
+                <a class="nav-link" th:href="@{/carro}">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="35"
+                    height="35"
+                    fill="currentColor"
+                    viewBox="0 0 576 512"
+                  >
+                    <path
+                      d="M528.1 301.3L575.4 112C579.6 94.8 566.8 80 549 80H128.9L119.6 36.5C117.4 26.5 108.3 20 98 20H24C10.7 20 0 30.7 0 44S10.7 68 24 68H77.1L139 356.2C117.6 372.3 104 397.2 104 424C104 468.2 139.8 504 184 504S264 468.2 264 424C264 414.4 262.5 405.2 260.1 396H415.9C413.5 405.2 412 414.4 412 424C412 468.2 447.8 504 492 504S572 468.2 572 424C572 397.2 558.4 372.3 537 356.2L528.1 301.3zM184 456C161.9 456 144 438.1 144 416S161.9 376 184 376S224 393.9 224 416S206.1 456 184 456zM492 456C469.9 456 452 438.1 452 416S469.9 376 492 376S532 393.9 532 416S514.1 456 492 456zM153.6 312L128 184H515.9L490.4 312H153.6z"
+                    />
+                  </svg>
+                </a>
               </li>
             </ul>
           </div>
@@ -63,23 +82,29 @@
       </nav>
     </div>
 
-    <!-- Navigation for usuario -->
     <div th:fragment="header-user">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
           <a class="navbar-brand" th:href="@{/}">LéemeOtravez</a>
 
           <div class="d-flex justify-content-center flex-grow-1">
-            <form class="form-inline my-2 my-lg-0 mx-auto" method="post" action="#">
+            <form
+              class="form-inline my-2 my-lg-0 mx-auto"
+              method="post"
+              th:action="@{/buscar}"
+            >
               <input
-                class="form-control mr-sm-2 rounded"
+                class="form-control mr-sm-2 rounded input-icon"
                 type="search"
-                placeholder="Buscar"
+                placeholder="Buscar libros..."
                 aria-label="Search"
-                name="nombre"
+                name="titulo"
                 autocomplete="off"
               />
-              <button class="btn btn-info my-2 my-sm-0 rounded px-2" type="submit">
+              <button
+                class="btn btn-info my-2 my-sm-0 rounded px-2"
+                type="submit"
+              >
                 Buscar
               </button>
             </form>
@@ -111,9 +136,14 @@
                   USUARIO
                 </a>
 
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <div
+                  class="dropdown-menu"
+                  aria-labelledby="navbarDropdownMenuLink"
+                >
                   <a class="dropdown-item" th:href="@{/carro}">Carrito</a>
-                  <a class="dropdown-item" th:href="@{/usuario/compras}">Compras</a>
+                  <a class="dropdown-item" th:href="@{/usuario/compras}"
+                    >Compras</a
+                  >
                 </div>
               </li>
             </ul>
@@ -122,7 +152,6 @@
       </nav>
     </div>
 
-    <!-- Footer -->
     <div th:fragment="footer">
       <footer class="footer">
         <div class="container text-center">
@@ -130,33 +159,51 @@
             class="logo"
             th:src="@{/iconos/Logo.png}"
             alt="Logo"
-            style="height: 150px;"
+            style="height: 150px"
           />
           <p class="m-0 text-white">&copy; LéemeOtravez</p>
-          
+
           <div>
-            <br>
-            <a class="iconos-footer" th:href="'mailto:LeemeOtraVez@outlook.es'" title="Hotmail">
+            <br />
+            <a
+              class="iconos-footer"
+              th:href="'mailto:LeemeOtraVez@outlook.es'"
+              title="Hotmail"
+            >
               <img th:src="@{/iconos/outlook.png}" alt="Hotmail" />
             </a>
-            <a class="iconos-footer" th:href="@{'https://x.com/LeemeOtraVez'}" title="Twitter">
+            <a
+              class="iconos-footer"
+              th:href="@{'https://x.com/LeemeOtraVez'}"
+              title="Twitter"
+            >
               <img th:src="@{/iconos/twitter.png}" alt="Twitter" />
             </a>
-            <a class="iconos-footer" th:href="@{'https://www.instagram.com/leemeotravez_/?utm_source=ig_web_button_share_sheet'}" title="Instagram">
+            <a
+              class="iconos-footer"
+              th:href="@{'https://www.instagram.com/leemeotravez_/?utm_source=ig_web_button_share_sheet'}"
+              title="Instagram"
+            >
               <img th:src="@{/iconos/insta.png}" alt="Instagram" />
             </a>
           </div>
-          <br>
+          <br />
           <p class="m-0 text-white">
-            <a th:href="@{/ficheros/PoliticaPriv.pdf}" target="_blank">Política de Privacidad</a> |
-            <a th:href="@{/ficheros/AvisosLegales.pdf}" target="_blank">Otros avisos legales</a>
+            <a th:href="@{/ficheros/PoliticaPriv.pdf}" target="_blank"
+              >Política de Privacidad</a
+            >
+            |
+            <a th:href="@{/ficheros/AvisosLegales.pdf}" target="_blank"
+              >Otros avisos legales</a
+            >
           </p>
         </div>
       </footer>
     </div>
 
-    <!-- Bootstrap core JavaScript -->
     <script th:src="@{/JqueryBootStrap/jquery/jquery.min.js}"></script>
-    <script th:src="@{/JqueryBootStrap/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <script
+      th:src="@{/JqueryBootStrap/bootstrap/js/bootstrap.bundle.min.js}"
+    ></script>
   </body>
 </html>

@@ -1,109 +1,91 @@
 <!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
 
-<head>
+    <title>LéemeOtraVez</title>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+    <link
+      th:href="@{/JqueryBootStrap/bootstrap/css/bootstrap.min.css}"
+      rel="stylesheet"
+    />
 
-  <title>Spring eCommerce</title>
+    <link th:href="@{/css/estilos.css}" rel="stylesheet" />
+  </head>
 
+  <body>
+    <div th:include="usuario/TemplateUsuario.html::header"></div>
 
-   <!-- Bootstrap core CSS -->
-   <link
-   th:href="@{/JqueryBootStrap/bootstrap/css/bootstrap.min.css}"
-   rel="stylesheet"
- />
-
- <!-- Custom styles for this template -->
- <link th:href="@{/css/heroic-features.css}" rel="stylesheet" />
-</head>
-
-<body>
-
-  <!-- Navigation -->
-  <div th:include="usuario/TemplateUsuario.html::header"></div>
-
-
-    <!-- Page Content -->
     <div class="container">
-
-
-      <!-- Page Heading/Breadcrumbs -->
-      <h1 class="mt-4 mb-3">
-        Spring eCommerce <small>Resumen de la compra</small>
-      </h1>
+      <h1 class="mt-4 mb-3">Resumen de la compra</h1>
 
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
         <li class="breadcrumb-item active">Compra</li>
       </ol>
 
-      <!-- Blog Post -->
       <div class="card mb-4">
         <div class="card-body">
           <div class="row">
-           <div class="col-lg-9">
-             <div class="card-body">
-              <h5 class="card-title">
-                DATOS COMPRA
-              </h5>
-              <h6 th:text="'Nombre: '+${usuario.nombre}">Nombre: </h6>
-              <h6 th:text="'Email: '+${usuario.email}">Correo: </h6>
-              <h6 th:text="'Dirección: '+${usuario.direccion}"></h6><br>
+            <div class="col-lg-9">
+              <div class="card-body">
+                <h5 class="card-title">DATOS COMPRA</h5>
+                <h6 th:text="'Nombre: '+${usuario.nombre}">Nombre:</h6>
+                <h6 th:text="'Email: '+${usuario.email}">Correo:</h6>
+                <h6 th:text="'Dirección: '+${usuario.direccion}"></h6>
+                <br />
 
-              <h5 class="card-title">
-                LIBROS
-              </h5>
-              <div class="alert alert-light" role="alert">
-                <table class="table" >
-                  <thead>
-                    <tr>
-                      <th scope="col">Libro</th>
-                      <th scope="col">Precio</th>
-                      <th scope="col">Cantidad</th>
-                      <th scope="col">Total</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr th:each = "det : ${carro}">
-                      <td th:text="${det.titulo}"></td>
-                      <td th:text="${det.precio}+€"></td>
-                      <td th:text="${det.cantidad}"></td>
-                      <td th:text="${det.precioTotal}+€"></td>
+                <h5 class="card-title">LIBROS</h5>
+                <div class="alert alert-light" role="alert">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Libro</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr th:each="det : ${carro}">
+                        <td th:text="${det.titulo}"></td>
+                        <td th:text="${det.precio}+€"></td>
+                        <td th:text="${det.cantidad}"></td>
+                        <td th:text="${det.precioTotal}+€"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
 
-                   </tr>
-                 </tbody>
-               </table>
-             </div>
+            <div class="col-lg-3">
+              <h2 class="card-title">Resumen Compra</h2>
 
-           </div>
-         </div>
-
-
-         <div class="col-lg-3">
-          <h2 class="card-title">Resumen Compra</h2>
-
-          <ul class="list-group">
-            <li class="list-group-item"><h5 th:text="'Precio Total: '+${compra.precioTotal}+€"></h5></li>
-            <a th:href="@{saveCompra}" class="btn btn-dark">Generar</a>
-          </ul>
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <h5 th:text="'Precio Total: '+${compra.precioTotal}+€"></h5>
+                </li>
+                <a th:href="@{saveCompra}" class="btn btn-brown">Tramitar</a>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  </div>
-  <!-- /.container -->
 
-    <!-- Footer -->
     <div th:include="usuario/TemplateUsuario.html::footer"></div>
 
- <!-- Bootstrap core JavaScript -->
- <script th:src="@{/JqueryBootStrap/jquery/jquery.min.js}"></script>
- <script th:src="@{/JqueryBootStrap/bootstrap/js/bootstrap.bundle.min.js}"></script>
-</body>
-
+    <script th:src="@{/JqueryBootStrap/jquery/jquery.min.js}"></script>
+    <script
+      th:src="@{/JqueryBootStrap/bootstrap/js/bootstrap.bundle.min.js}"
+    ></script>
+  </body>
 </html>

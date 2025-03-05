@@ -9,31 +9,27 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>Spring eCommerce</title>
+    <title>LéemeOtraVez</title>
 
-    <!-- Bootstrap core CSS -->
     <link
       th:href="@{/JqueryBootStrap/bootstrap/css/bootstrap.min.css}"
       rel="stylesheet"
     />
 
-    <!-- Custom styles for this template -->
-    <link th:href="@{/css/heroic-features.css}" rel="stylesheet" />
+    <link th:href="@{/css/estilos.css}" rel="stylesheet" />
   </head>
 
   <body>
-    <!-- Navigation -->
     <div th:include="admin/admin.html::header"></div>
-    <!-- Page Content -->
+
     <div class="container">
-      <!-- Page Heading/Breadcrumbs -->
       <h1 class="mt-4 mb-3">Usuarios</h1>
 
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
         <li class="breadcrumb-item active">Ver Usuarios</li>
       </ol>
- 
+
       <table class="table">
         <thead>
           <tr>
@@ -47,17 +43,16 @@
             <td th:text="${usuario.nombre}"></td>
             <td th:text="${usuario.email}"></td>
             <td th:text="${usuario.direccion}"></td>
-          </tr>       
+          </tr>
         </tbody>
       </table>
     </div>
-    <!-- /.container -->
 
-    <!-- Footer -->
     <div th:include="admin/admin.html::footer"></div>
 
-    <!-- Bootstrap core JavaScript -->
     <script th:src="@{/JqueryBootStrap/jquery/jquery.min.js}"></script>
-    <script th:src="@{/JqueryBootStrap/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <script
+      th:src="@{/JqueryBootStrap/bootstrap/js/bootstrap.bundle.min.js}"
+    ></script>
   </body>
 </html>

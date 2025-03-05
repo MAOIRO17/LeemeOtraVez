@@ -11,24 +11,24 @@
 
     <title>LéemeOtraVez</title>
 
-    <!-- Bootstrap core CSS -->
     <link
       th:href="@{/JqueryBootStrap/bootstrap/css/bootstrap.min.css}"
       rel="stylesheet"
     />
 
-    <!-- Custom styles for this template -->
-    <link th:href="@{/css/heroic-features.css}" rel="stylesheet" />
+    <link th:href="@{/css/estilos.css}" rel="stylesheet" />
   </head>
-
   <body>
-    <!-- Navigation -->
-    <div th:include="usuario/TemplateUsuario.html::header" th:if="${session == null}"></div>
-    <div th:include="usuario/TemplateUsuario.html::header-user" th:unless="${session == null}"></div>
+    <div
+      th:include="usuario/TemplateUsuario.html::header"
+      th:if="${session == null}"
+    ></div>
+    <div
+      th:include="usuario/TemplateUsuario.html::header-user"
+      th:unless="${session == null}"
+    ></div>
 
-    <!-- Page Content -->
     <div class="container">
-      <!-- Page Heading/Breadcrumbs -->
       <h1 class="mt-4 mb-3">Compras</h1>
 
       <ol class="breadcrumb">
@@ -36,7 +36,6 @@
         <li class="breadcrumb-item active">Compras</li>
       </ol>
 
-      <!-- Blog Post -->
       <div class="card mb-4">
         <div class="card-body">
           <div class="row">
@@ -56,7 +55,9 @@
                     <td th:text="${compra.fecha}"></td>
                     <td th:text="${compra.precioTotal}"></td>
                     <td>
-                      <a th:href="@{/usuario/detalles/{id} (id=${compra.id})}" class="btn btn-brown"
+                      <a
+                        th:href="@{/usuario/detalles/{id} (id=${compra.id})}"
+                        class="btn btn-brown"
                         >Ver Detalles</a
                       >
                     </td>
@@ -68,13 +69,12 @@
         </div>
       </div>
     </div>
-    <!-- /.container -->
 
-    <!-- Footer -->
     <div th:include="usuario/TemplateUsuario.html::footer"></div>
 
-    <!-- Bootstrap core JavaScript -->
     <script th:src="@{/JqueryBootStrap/jquery/jquery.min.js}"></script>
-    <script th:src="@{/JqueryBootStrap/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <script
+      th:src="@{/JqueryBootStrap/bootstrap/js/bootstrap.bundle.min.js}"
+    ></script>
   </body>
 </html>
