@@ -6,8 +6,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,7 +30,6 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/")
 public class HomeController {
-    private final Logger log = LoggerFactory.getLogger(HomeController.class);
     @Autowired
     private LibrosService librosService;
     @Autowired
@@ -53,7 +51,6 @@ public class HomeController {
 
     @GetMapping("/libroshome/{id}")
     public String LibrosHome(@PathVariable Integer id, Model model) {
-        log.info("id: " + id);
         Libro libro = new Libro();
         Optional<Libro> libroOptional = librosService.get(id);
         libro = libroOptional.get();

@@ -14,7 +14,7 @@
     <div class="container">
       <h1 class="mt-4 mb-3">Crear Libro</h1>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item"><a th:href="@{/libros}">Home</a></li>
         <li class="breadcrumb-item active">Añadir Libro</li>
       </ol><br>
       <form class="form-horizontal" th:action="@{/libros/save}" method="post" enctype="multipart/form-data">
