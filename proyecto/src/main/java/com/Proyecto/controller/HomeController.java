@@ -67,8 +67,6 @@ public class HomeController {
         Libro libro = new Libro();
         double sumaTotal = 0;
         Optional<Libro> libroOptional = librosService.get(id);
-        log.info("libro añadido al carro : {}" + libroOptional.get());
-        log.info("cantidad: {}" + cantidad);
         libro = libroOptional.get();
         detalleCompra.setCantidad(cantidad);
         detalleCompra.setPrecio(libro.getPrecio());

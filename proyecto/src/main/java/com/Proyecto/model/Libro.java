@@ -14,7 +14,7 @@ public class Libro {
     private Integer id;
     private String titulo;
     private String autor;
-    private String cantidad;
+    private Integer cantidad;
     @Enumerated(EnumType.STRING)
     private Categoria categoria;
 
