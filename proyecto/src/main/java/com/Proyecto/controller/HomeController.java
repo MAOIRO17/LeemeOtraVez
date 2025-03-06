@@ -44,7 +44,7 @@ public class HomeController {
     @GetMapping("")
     public String home(Model model,HttpSession session) {
         model.addAttribute("libros", librosService.getAll());
-        model.addAttribute("session", session.getAttribute("usuario"));
+        model.addAttribute("sesion", session.getAttribute("usuario"));
         return "usuario/homeUsuario";
 
     }
