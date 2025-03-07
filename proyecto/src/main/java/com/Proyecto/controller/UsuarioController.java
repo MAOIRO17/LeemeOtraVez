@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,8 +26,6 @@ public class UsuarioController {
     private UsuarioService usuarioService;
     @Autowired
     private CompraService compraService;
-    // @Autowired
-    // BCryptPasswordEncoder bCrypt = new BCryptPasswordEncoder();
 
     @GetMapping("/registroUsuario")
     public String registroUsuario() {
@@ -38,7 +35,6 @@ public class UsuarioController {
     @PostMapping("/guardarUsuario")
     public String guardarUsuario(Usuario usuario) {
         usuario.setTipo("USUARIO");
-        // usuario.setPassword(bCrypt.encode(usuario.getPassword()));
         usuarioService.save(usuario);
         return "redirect:/";
     }
@@ -78,6 +74,7 @@ public class UsuarioController {
         model.addAttribute("session", session.getAttribute("usuario"));
         return "/usuario/DetallesCompras";
     }
+
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.removeAttribute("usuario");
