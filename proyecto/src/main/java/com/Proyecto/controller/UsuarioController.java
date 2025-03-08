@@ -3,21 +3,21 @@ package com.Proyecto.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.Proyecto.model.Compra;
 import com.Proyecto.model.Usuario;
 import com.Proyecto.service.CompraService;
 import com.Proyecto.service.UsuarioService;
-
-import jakarta.servlet.http.HttpSession;
-
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @RequestMapping("/usuario")
@@ -27,6 +27,7 @@ public class UsuarioController {
     @Autowired
     private CompraService compraService;
 
+BCryptPasswordEncoder passwordEncoder=new BCryptPasswordEncoder();
     @GetMapping("/registroUsuario")
     public String registroUsuario() {
         return "/usuario/registroUsuario";
@@ -35,6 +36,7 @@ public class UsuarioController {
     @PostMapping("/guardarUsuario")
     public String guardarUsuario(Usuario usuario) {
         usuario.setTipo("USUARIO");
+        usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
         usuarioService.save(usuario);
         return "redirect:/";
     }
@@ -68,7 +70,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/detalles/{id}")
-    public String detallesCompra(@PathVariable Integer id, Model model, HttpSession session) {
+    public String detallesCompra(@PathVariable Long id, Model model, HttpSession session) {
         Optional<Compra> compra = compraService.findById(id);
         model.addAttribute("detalles", compra.get().getDetalleCompra());
         model.addAttribute("session", session.getAttribute("usuario"));

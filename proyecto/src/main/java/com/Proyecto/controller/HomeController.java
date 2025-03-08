@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,8 +25,6 @@ import com.Proyecto.service.CompraService;
 import com.Proyecto.service.DetalleCompraService;
 import com.Proyecto.service.LibrosService;
 import com.Proyecto.service.UsuarioService;
-
-import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/")

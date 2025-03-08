@@ -43,7 +43,7 @@ private CompraService compraService;
         return "admin/Compras";
     }
     @GetMapping("/detalles/{id}")
-    public String Detalles(Model model, @PathVariable Integer id){
+    public String Detalles(Model model, @PathVariable Long id){
         Compra compra = compraService.findById(id).get();
         model.addAttribute("detalles", compra.getDetalleCompra());
         return "admin/DetallesCompras";
