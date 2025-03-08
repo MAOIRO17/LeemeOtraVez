@@ -23,6 +23,11 @@ mvn spring-boot:run
     Seleccionar la base de datos y hacer clic en Start Import.
 4-Verificar que las tablas se hayan importado correctamente en Schemas.
 
+(En esta BD:
+ADMIN->correo:carlos@gmail.com, contraseña: Carlos1234
+USUARIO(ejemplo de usuario registrado cualquiera)->correo:bea@gmail.com, contraseña: Bea12345
+)
+
 ```    
 ## Tecnologías
 Las tecnologías utilizadas son:
