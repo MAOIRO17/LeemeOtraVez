@@ -41,7 +41,7 @@ Las tecnologías utilizadas son:
 │   ├── model/
 │   ├── Repository/
 │   ├── service/
-│   ├── ProyectoApplication.java
+│   ├── LeemeOtraVezApplication.java
 │   
 ├── src/main/resources
 │   ├── static/
