@@ -2,6 +2,7 @@ package com.Proyecto.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,12 +25,10 @@ public class CompraServiceImpl implements CompraService {
     public Compra save(Compra compra) {
         return compraRepository.save(compra);
     }
-
-    @Override
-    public String GenerarNumCompra() {
-        // Implementación de la generación del número de compra
-        return "COMPRA" + System.currentTimeMillis();
-    }
+@Override
+public String GenerarNumCompra() {
+    return String.valueOf(new Random().nextInt(900) + 100);
+}
 
     @Override
     public List<Compra> findByUsuarioId(Integer usuario) {
@@ -37,7 +36,7 @@ public class CompraServiceImpl implements CompraService {
     }
 
     @Override
-    public Optional<Compra> findById(Long id) {
+    public Optional<Compra> findById(Integer id) {
         return compraRepository.findById(id);
     }
 }

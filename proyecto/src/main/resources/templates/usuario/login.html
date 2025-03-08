@@ -36,21 +36,21 @@
         </div>
       </div>
 
-      <form th:action="@{/usuario/acceder}" method="post">
+      <form th:action="@{/usuario/login}" method="post">
         <div class="form-group">
-          <label for="email">Email:</label>
+          <label for="username">Email:</label>
           <input
             type="text"
             class="form-control"
-            id="email"
-            name="email"
+            id="username"
+            name="username"
             placeholder="Escriba su email"
             autocomplete="off"
           />
         </div>
-
+      
         <div class="form-group">
-          <label for="pwd">Contraseña:</label>
+          <label for="password">Contraseña:</label>
           <input
             type="password"
             class="form-control"
@@ -59,20 +59,21 @@
             placeholder="Escriba su contraseña"
           />
         </div>
-
+      
         <a
           th:href="@{/usuario/registroUsuario}"
           class="card-link"
           style="color: #b8860b; text-align: center"
           >¿Aún no tienes cuenta? Regístrate</a
         >
-
+      
         <div class="form-group text-center">
           <button type="submit" class="btn btn-brown">
             <span class="glyphicon glyphicon-ok"></span> Iniciar Sesión
           </button>
         </div>
       </form>
+      
     </div>
 
     <div th:include="usuario/TemplateUsuario.html::footer"></div>

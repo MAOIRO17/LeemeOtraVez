@@ -47,7 +47,7 @@ public class LibrosController {
 
     @PostMapping("/save")
     public String save(Libro libro, @RequestParam("img") MultipartFile file, HttpSession session) throws IOException {
-        Usuario u = usuarioService.findById((Integer) session.getAttribute("usuario")).get();
+        Usuario u = usuarioService.findById((Integer) session.getAttribute("idusuario")).get();
         libro.setUsuario(u);
         if (libro.getId() == null) {
             String nombreImg = uploadFiles.saveImg(file);

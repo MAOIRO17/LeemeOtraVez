@@ -22,12 +22,15 @@ import com.Proyecto.service.UsuarioService;
 @Controller
 @RequestMapping("/usuario")
 public class UsuarioController {
+
     @Autowired
     private UsuarioService usuarioService;
+
     @Autowired
     private CompraService compraService;
 
-BCryptPasswordEncoder passwordEncoder=new BCryptPasswordEncoder();
+    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
     @GetMapping("/registroUsuario")
     public String registroUsuario() {
         return "/usuario/registroUsuario";
@@ -43,43 +46,53 @@ BCryptPasswordEncoder passwordEncoder=new BCryptPasswordEncoder();
 
     @GetMapping("/login")
     public String login() {
-        return "usuario/loginUsuario";
+        return "usuario/login";
     }
 
-    @PostMapping("/acceder")
+    @GetMapping("/acceder")
     public String acceder(Usuario usuario, HttpSession session) {
-        Optional<Usuario> usuarioBD = usuarioService.findByEmail(usuario.getEmail());
-        if (usuarioBD.isPresent()) {
-            session.setAttribute("usuario", usuarioBD.get().getId());
-            if (usuarioBD.get().getTipo().equals("ADMIN")) {
+        Optional<Usuario> user = usuarioService
+                .findById(Integer.parseInt(session.getAttribute("idusuario").toString()));
+        if (user.isPresent()) {
+            session.setAttribute("idusuario", user.get().getId());
+
+            if (user.get().getTipo().equals("ADMIN")) {
                 return "redirect:/admin";
             } else {
                 return "redirect:/";
             }
         }
+
         return "redirect:/";
+
     }
 
     @GetMapping("/compras")
     public String compras(HttpSession session, Model model) {
-        model.addAttribute("session", session.getAttribute("usuario"));
-        Usuario usuario = usuarioService.findById((Integer) session.getAttribute("usuario")).get();
+        model.addAttribute("sesion", session.getAttribute("idusuario"));
+
+        Usuario usuario = usuarioService.findById(Integer.parseInt(session.getAttribute("idusuario").toString())).get();
         List<Compra> compras = compraService.findByUsuarioId(usuario.getId());
-        model.addAttribute("compras", compras);
-        return "/usuario/compras";
+
+        model.addAttribute("compras",compras);
+
+        return "usuario/compras";
     }
 
     @GetMapping("/detalles/{id}")
-    public String detallesCompra(@PathVariable Long id, Model model, HttpSession session) {
+    public String detallesCompra(@PathVariable Integer id, Model model, HttpSession session) {
         Optional<Compra> compra = compraService.findById(id);
-        model.addAttribute("detalles", compra.get().getDetalleCompra());
-        model.addAttribute("session", session.getAttribute("usuario"));
+        if (compra.isPresent()) {
+            model.addAttribute("detalles", compra.get().getDetalleCompra());
+        }
+
+        model.addAttribute("sesion", session.getAttribute("idusuario"));
         return "/usuario/DetallesCompras";
     }
 
     @GetMapping("/logout")
     public String logout(HttpSession session) {
-        session.removeAttribute("usuario");
+        session.removeAttribute("idusuario");
         return "redirect:/";
     }
 }

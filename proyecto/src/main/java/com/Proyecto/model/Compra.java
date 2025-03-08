@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 public class Compra {
     @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String numCompra;
     private Date fecha;
     private double precioTotal;

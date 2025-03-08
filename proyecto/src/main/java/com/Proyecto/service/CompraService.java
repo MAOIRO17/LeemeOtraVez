@@ -13,6 +13,6 @@ public interface CompraService {
     Compra save(Compra compra);
     String GenerarNumCompra();
     List<Compra> findByUsuarioId(Integer usuario);
-    Optional<Compra> findById(Long id);
+    Optional<Compra> findById(Integer id);
 
 }

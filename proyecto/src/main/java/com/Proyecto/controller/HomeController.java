@@ -37,13 +37,14 @@ public class HomeController {
     private CompraService compraService;
     @Autowired
     private DetalleCompraService detalleCompraService;
+
     List<DetalleCompra> detallesCompra = new ArrayList<DetalleCompra>();
     Compra compra = new Compra();
 
     @GetMapping("")
     public String home(Model model,HttpSession session) {
         model.addAttribute("libros", librosService.getAll());
-        model.addAttribute("sesion", session.getAttribute("usuario"));
+        model.addAttribute("sesion", session.getAttribute("idusuario"));
         return "usuario/homeUsuario";
 
     }
@@ -62,6 +63,7 @@ public class HomeController {
         DetalleCompra detalleCompra = new DetalleCompra();
         Libro libro = new Libro();
         double sumaTotal = 0;
+
         Optional<Libro> libroOptional = librosService.get(id);
         libro = libroOptional.get();
         detalleCompra.setCantidad(cantidad);
@@ -69,6 +71,7 @@ public class HomeController {
         detalleCompra.setTitulo(libro.getTitulo());
         detalleCompra.setPrecioTotal(libro.getPrecio() * cantidad);
         detalleCompra.setLibro(libro);
+
         Integer idLibro = libro.getId();
         boolean existe = detallesCompra.stream().anyMatch(l -> l.getLibro().getId() == idLibro);
         if (!existe) {
@@ -104,13 +107,13 @@ public class HomeController {
     public String carro(Model model, HttpSession session) {
         model.addAttribute("carro", detallesCompra);
         model.addAttribute("compra", compra);
-        model.addAttribute("session", session.getAttribute("usuario"));
+        model.addAttribute("sesion", session.getAttribute("idusuario"));
         return "/usuario/carro";
     }
 
     @GetMapping("/ResumenCompra")
     public String ResumenCompra(Model model, HttpSession session) {
-        Usuario usuario = usuarioService.findById(Integer.parseInt(session.getAttribute("usuario").toString().toString())
+        Usuario usuario = usuarioService.findById(Integer.parseInt(session.getAttribute("idusuario").toString().toString())
         ).get();
 
         model.addAttribute("carro", detallesCompra);
@@ -123,7 +126,7 @@ public class HomeController {
         Date fecha = new Date();
         compra.setFecha(fecha);
         compra.setNumCompra(compraService.GenerarNumCompra());
-        Usuario usuario = usuarioService.findById(Integer.parseInt(session.getAttribute("usuario").toString().toString())).get();
+        Usuario usuario = usuarioService.findById(Integer.parseInt(session.getAttribute("idusuario").toString().toString())).get();
         compra.setUsuario(usuario);  
         compraService.save(compra);
         for (DetalleCompra detalle : detallesCompra) {
